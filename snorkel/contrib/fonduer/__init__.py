@@ -6,7 +6,7 @@ import sys
 # `from snorkel.contrib.fonduer.fonduer.parser import HTMLPreprocessor`
 from .fonduer import SnorkelSession
 from .fonduer.parser import HTMLPreprocessor, OmniParser
-from .fonduer.async_annotations import BatchFeatureAnnotator, BatchLabelAnnotator
+# from .fonduer.async_annotations import BatchFeatureAnnotator, BatchLabelAnnotator
 
 # Raise the visibility of these subpackages to the package level for cleaner
 # syntax. The key idea here is when we do `from package.submodule1 import foo`
@@ -19,9 +19,9 @@ from .fonduer.async_annotations import BatchFeatureAnnotator, BatchLabelAnnotato
 # need to write `from snorkel.contrib.fonduer.fonduer.models import Phrase`
 from .fonduer import models
 from .fonduer import lf_helpers
-from .fonduer import visualizer
+# from .fonduer import visualizer
 from .fonduer import candidates
 
-for module in [models, lf_helpers, visualizer, candidates]:
+for module in [models, lf_helpers, candidates]:
     full_name = '{}.{}'.format(__package__, module.__name__.rsplit('.')[-1])
     sys.modules[full_name] = sys.modules[module.__name__]
