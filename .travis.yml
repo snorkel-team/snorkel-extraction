@@ -43,8 +43,8 @@ script:
   - python test/learning/pytorch/test_determinism.py
 
   # Run Tensorflow test modules
-  - runipy test/learning/tensorflow/test_TF_notebook.ipynb
-  - runipy test/learning/tensorflow/test_parallel_grid_search.ipynb
+  # - runipy test/learning/tensorflow/test_TF_notebook.ipynb
+  # - runipy test/learning/tensorflow/test_parallel_grid_search.ipynb
 
   # Runs intro tutorial notebooks
   - runipy tutorials/intro/Intro_Tutorial_1.ipynb
