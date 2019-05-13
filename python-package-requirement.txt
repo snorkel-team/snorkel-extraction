@@ -19,3 +19,4 @@ tika
 spacy
 psycopg2
 pandas
+scikit-learn
