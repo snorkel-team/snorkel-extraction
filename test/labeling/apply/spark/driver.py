@@ -3,29 +3,34 @@ This script is used to manually test
     `snorkel.labeling.apply.lf_applier_spark.SparkLFApplier`
 
 To test on AWS EMR:
-    1. Allocate an EMR cluster (e.g. label 5.24.0) with > 1 worker and SSH permissions
-    2. Clone and pip install snorkel on the master node
-        ```
-        sudo yum install git
-        git clone https://github.com/HazyResearch/snorkel
-        cd snorkel
-        python3 -m pip install -t snorkel-package .
-        cd snorkel-package
-        zip -r ../snorkel-package.zip .
-        cd ..
-        ```
-    3. Run
-        ```
-        sudo sed -i -e \
-            '$a\export PYSPARK_PYTHON=/usr/bin/python3' \
-            /etc/spark/conf/spark-env.sh
-        ```
-    4. Run
-        ```
-        spark-submit \
-            --py-files snorkel-package.zip \
-            test/labeling/apply/lf_applier_spark_test_script.py
-        ```
+    1. Allocate an EMR cluster (e.g. label 5.24.0)
+        * Add > 1 worker
+        * Use the following software configuration
+            ```
+            [{
+                "Classification": "spark-env",
+                "Configurations": [
+                    {
+                        "Classification": "export",
+                        "Properties": {"PYSPARK_PYTHON": "/usr/bin/python3"},
+                    }
+                ],
+            },
+            {
+                "Classification": "yarn-env",
+                "Configurations": [
+                    {
+                        "Classification": "export",
+                        "Properties": {"PYSPARK_PYTHON": "/usr/bin/python3"},
+                    }
+                ],
+            }]
+            ```
+        * Add SSH permissions
+        * Upload `bootstrap-actions.sh` to S3 and use it as the bootstrap
+            actions script
+    2. SSH into the master node and run
+        `spark-submit test/labeling/apply/spark/driver.py`
 """
 
 import logging
