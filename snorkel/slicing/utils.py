@@ -6,7 +6,7 @@ import torch
 from scipy.sparse import csr_matrix
 from torch import nn
 
-from snorkel.model.utils import convert_labels
+from snorkel.analysis.utils import convert_labels
 from snorkel.end_model.data import MultitaskDataLoader
 from snorkel.end_model.modules.utils import ce_loss, softmax
 from snorkel.end_model.scorer import Scorer
@@ -141,7 +141,7 @@ def convert_to_slice_tasks(base_task: Task, slice_names: List[str]) -> List[Task
         )
         pred_task_flow = body_flow + [pred_transform_op, pred_head_op]
 
-        # Create pred task
+        # Create preds task
         pred_task = Task(
             name=pred_task_name,
             module_pool=pred_module_pool,
