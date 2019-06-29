@@ -128,3 +128,34 @@ def plusminus_to_categorical(Y):
 
 def categorical_to_plusminus(Y):
     return convert_labels(Y, "categorical", "plusminus")
+
+
+def filter_labels(golds, preds, probs=None, ignore_in_golds=[], ignore_in_preds=[]):
+    golds = arraylike_to_numpy(golds)
+    preds = arraylike_to_numpy(preds)
+    # probs is not automatically converted because arraylike_to_numpy() expects 1D input
+
+    golds, preds, probs = _mask_ignored(
+        golds, preds, probs, ignore_in_golds, ignore_in_preds
+    )
+    return golds, preds, probs
+
+
+def _mask_ignored(golds, preds, probs, ignore_in_golds, ignore_in_preds):
+    if ignore_in_golds or ignore_in_preds:
+        mask = _get_mask(golds, preds, ignore_in_golds, ignore_in_preds)
+        golds = golds[mask] if golds is not None else None
+        preds = preds[mask] if preds is not None else None
+        probs = probs[mask] if probs is not None else None
+    return golds, preds, probs
+
+
+def _get_mask(golds, preds, ignore_in_golds, ignore_in_preds):
+    """Remove from golds, preds all items with labels designated to ignore."""
+    mask = np.ones_like(golds).astype(bool)
+    for x in ignore_in_golds:
+        mask *= np.where(golds != x, 1, 0).astype(bool)
+    for x in ignore_in_preds:
+        mask *= np.where(preds != x, 1, 0).astype(bool)
+
+    return mask
