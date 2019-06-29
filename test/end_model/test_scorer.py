@@ -20,3 +20,7 @@ class ScorerTest(unittest.TestCase):
         self.assertEqual(results["accuracy"], 0.6)
         self.assertEqual(results["f1"], 2 / 3)
         self.assertEqual(results["sum"], 3)
+
+
+if __name__ == "__main__":
+    unittest.main()
