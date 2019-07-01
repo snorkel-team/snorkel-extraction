@@ -13,13 +13,6 @@ class MetricsTest(unittest.TestCase):
         score = metric_score(golds, preds, probs=None, metric="accuracy")
         self.assertAlmostEqual(score, 0.8)
 
-    def test_metric_score(self):
-        golds = [1, 1, 1, 2, 2]
-        preds = [1, 1, 1, 2, 1]
-        acc = metric_score(golds, preds, probs=None, metric="accuracy")
-        met = metric_score(golds, preds, probs=None, metric="accuracy")
-        self.assertAlmostEqual(acc, met)
-
     def test_bad_inputs(self):
         golds = [1, 1, 1, 2, 2]
         pred1 = [1, 1, 1, 2, 0.5]
@@ -113,6 +106,26 @@ class MetricsTest(unittest.TestCase):
             metric_score(golds, preds, probs=None, metric="fbeta", beta=1e6),
             places=2,
         )
+
+    def test_matthews(self):
+        golds = [1, 1, 1, 1, 2]
+        preds = [2, 1, 1, 1, 1]
+        mcc = metric_score(golds, preds, probs=None, metric="matthews_corrcoef")
+        self.assertAlmostEqual(mcc, -0.25)
+
+        golds = [1, 1, 1, 1, 2]
+        preds = [1, 1, 1, 1, 2]
+        mcc = metric_score(golds, preds, probs=None, metric="matthews_corrcoef")
+        self.assertAlmostEqual(mcc, 1.0)
+
+    def test_roc_auc(self):
+        golds = [1, 1, 1, 1, 2]
+        probs = np.array([[1.0, 0.0], [1.0, 0.0], [1.0, 0.0], [1.0, 0.0], [0.0, 1.0]])
+        roc_auc = metric_score(golds, preds=None, probs=probs, metric="roc_auc")
+        self.assertAlmostEqual(roc_auc, 0.0)
+        probs = np.fliplr(probs)
+        roc_auc = metric_score(golds, preds=None, probs=probs, metric="roc_auc")
+        self.assertAlmostEqual(roc_auc, 1.0)
 
 
 if __name__ == "__main__":
