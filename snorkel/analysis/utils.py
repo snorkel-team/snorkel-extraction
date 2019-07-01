@@ -39,7 +39,7 @@ def pred_to_prob(preds: np.ndarray, num_classes: int) -> np.ndarray:
     Parameters
     ----------
     preds
-        A [num_datapoints] or [num_datapoints], 1] array of predictions
+        A [num_datapoints] or [num_datapoints, 1] array of predictions
 
     Returns
     -------
