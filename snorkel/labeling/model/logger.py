@@ -21,6 +21,7 @@ class Logger:
     def __init__(self, log_train_every: int) -> None:
         self.log_train_every = log_train_every
         self.unit_count = 0
+        self.total_count = 0
 
     def check(self) -> bool:
         """Check if the logging frequency has been met.
@@ -48,6 +49,8 @@ class Logger:
         >>> logger.log(metrics_dict)
         [0 epochs]: TRAIN:[loss=5.000]
         """
+
+        self.total_count = self.total_count + self.unit_count
         self.print_to_screen(metrics_dict)
         self.unit_count = 0
 
@@ -92,7 +95,7 @@ class Logger:
             else:
                 score_strings[split].append(f"{metric_name}={value}")
 
-        string = f"[{self.unit_count} epochs]:"
+        string = f"[{self.total_count} epochs]:"
 
         if score_strings["train"]:
             train_scores = f"{', '.join(score_strings['train'])}"

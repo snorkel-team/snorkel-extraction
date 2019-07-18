@@ -698,7 +698,7 @@ class LabelModel(nn.Module):
         self.to(self.config["device"])
 
         # Set training components
-        self._set_logger(train_config, epoch_size=1)
+        self._set_logger(train_config, epoch_size=10)
         self._set_optimizer(train_config)
         self._set_scheduler(train_config)
 
