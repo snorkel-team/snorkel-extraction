@@ -1,4 +1,8 @@
-from snorkel.labeling.lf import LabelingFunction, labeling_function
+from typing import Any, List, Mapping, Optional
+
+from snorkel.labeling import LabelingFunction
+from snorkel.preprocess import BasePreprocessor
+from snorkel.utils.data_operators import OperatorDecorator
 
 
 class SlicingFunction(LabelingFunction):
@@ -10,10 +14,32 @@ class SlicingFunction(LabelingFunction):
     pass
 
 
-class slicing_function(labeling_function):
+class slicing_function(OperatorDecorator):
     """Decorator to define a SlicingFunction object from a function.
 
-    See ``snorkel.labeling.lf.labeling_function`` for details.
+    Parameters
+    ----------
+    name
+        See ``snorkel.utils.OperatorDecorator``.
+    resources
+        See ``snorkel.utils.OperatorDecorator``.
+    preprocessors
+        See ``snorkel.utils.OperatorDecorator``.
+    fault_tolerant
+        See ``snorkel.utils.OperatorDecorator``.
     """
 
-    pass
+    def __init__(
+        self,
+        name: Optional[str] = None,
+        resources: Optional[Mapping[str, Any]] = None,
+        pre: Optional[List[BasePreprocessor]] = None,
+        fault_tolerant: bool = False,
+    ) -> None:
+        super().__init__(
+            operator=SlicingFunction,
+            name=name,
+            resources=resources,
+            pre=pre,
+            fault_tolerant=fault_tolerant,
+        )
