@@ -27,6 +27,7 @@ from snorkel.utils import probs_to_preds
 from .task import Operation, Task
 
 OutputDict = Dict[str, Mapping[Union[str, int], Any]]
+RemapLabelDict = Optional[Dict[str, Optional[str]]]
 
 
 class ClassifierConfig(Config):
@@ -320,7 +321,7 @@ class MultitaskClassifier(nn.Module):
         self,
         dataloader: DictDataLoader,
         return_preds: bool = False,
-        remap_labels: Dict[str, str] = {},
+        remap_labels: RemapLabelDict = {},
     ) -> Dict[str, Dict[str, torch.Tensor]]:
         """Calculate probabilities, (optionally) predictions, and pull out gold labels.
 
@@ -384,7 +385,7 @@ class MultitaskClassifier(nn.Module):
     def score(
         self,
         dataloaders: List[DictDataLoader],
-        remap_labels: Dict[str, str] = {},
+        remap_labels: RemapLabelDict = {},
         as_dataframe: bool = False,
     ) -> Dict[str, float]:
         """Calculate scores for the provided DictDataLoaders.
@@ -403,7 +404,7 @@ class MultitaskClassifier(nn.Module):
         Returns
         -------
         Dict[str, float]
-            A dictionary mapping metric names to corresponding scores
+            A dictionary mapping metric¡ names to corresponding scores
             Metric names will be of the form "task/dataset/split/metric"
         """
 
@@ -421,7 +422,7 @@ class MultitaskClassifier(nn.Module):
             # What labels in Y_dict are we ignoring?
             extra_labels = set(Y_dict.keys()).difference(set(labels_to_tasks.keys()))
             if extra_labels:
-                logging.warning(
+                logging.info(
                     f"Ignoring extra labels in dataloader ({dataloader.dataset.split}): {extra_labels}"  # type: ignore
                 )
 
@@ -458,7 +459,7 @@ class MultitaskClassifier(nn.Module):
             return metric_score_dict
 
     def _get_labels_to_tasks(
-        self, label_names: Iterable[str], remap_labels: Dict[str, str] = {}
+        self, label_names: Iterable[str], remap_labels: RemapLabelDict = {}
     ) -> Dict[str, str]:
         """Map each label to its corresponding task outputs based on whether the task is available.
 
@@ -468,7 +469,7 @@ class MultitaskClassifier(nn.Module):
         labels_to_tasks = {}
         for label in label_names:
             # Override any existing label -> task mappings
-            if label in remap_labels:
+            if remap_labels and label in remap_labels:
                 task = remap_labels.get(label)
                 # Note: task might be manually remapped to None to remove it from the labels_to_tasks
                 if task is not None:
