@@ -4,7 +4,7 @@
 
 **_v0.7.0_**
 
-[![Build Status](https://travis-ci.org/snorkel-team/snorkel-extraction.svg?branch=master)](https://travis-ci.org/snorkel-team/snorkel-extraction)
+[![Build Status](https://travis-ci.org/snorkel-team/snorkel-extraction.svg?branch=master)](https://travis-ci.com/snorkel-team/snorkel-extraction)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Snorkel Extraction demonstrates how to perform information extraction with a previous version (v0.7.0) of Snorkel.
