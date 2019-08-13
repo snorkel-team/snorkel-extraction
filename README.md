@@ -47,7 +47,7 @@ cd snorkel-extraction
 conda env create --file=environment.yml
 
 # Activate the environment
-source activate snorkel-extraction
+conda activate snorkel-extraction
 
 # Install snorkel in the environment
 pip install .
@@ -63,14 +63,14 @@ jupyter notebook
 ```
 
 Then a Jupyter notebook tab will open in your browser. 
-From here you can run existing Snorkel Extraction notebooks or create your own.
+From here you can run existing Snorkel Extraction tutorial notebooks or create your own.
 
 ## Tutorials
 
 From within the Jupyter browser, navigate to the [`tutorials`](tutorials) directory and try out one of the existing notebooks!
 
 The [introductory tutorial](tutorials/intro) in `tutorials/intro` covers the entire Snorkel Extraction workflow, showing how to extract spouse relations from news articles.
-You can also check out all the great [materials](https://simtk.org/frs/?group_id=1263) from the recent Mobilize Center-hosted [Snorkel workshop](http://mobilize.stanford.edu/events/snorkelworkshop2017/)!
+You can also check out all the great [materials](https://simtk.org/frs/?group_id=1263) from the 2017 Mobilize Center-hosted [Snorkel workshop](http://mobilize.stanford.edu/events/snorkelworkshop2017/)!
 
 ## Installation
 
