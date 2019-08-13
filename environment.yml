@@ -1,4 +1,4 @@
-name: snorkel
+name: snorkel-extraction
 channels:
   - conda-forge
   - pytorch
@@ -8,12 +8,13 @@ dependencies:
   - ipywidgets==7.4.2
   - jupyter==1.0.0
   - lxml==4.3.3
-  - matplotlib==3.0.1
-  - nltk==3.2.5
+  - matplotlib==3.1.0
+  - nltk==3.4.4
   - numba==0.43.1
-  - numpy==1.16.1
+  - numpy==1.12.1
   - pytorch==1.1.0
   - pandas==0.24.2
+  - pip==19.0.3
   - py4j==0.10.8.1
   - python>=3.6
   - requests==2.22.0
