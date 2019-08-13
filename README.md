@@ -7,7 +7,7 @@
 [![Build Status](https://travis-ci.org/snorkel-team/snorkel-extraction.svg?branch=master)](https://travis-ci.com/snorkel-team/snorkel-extraction)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Snorkel Extraction demonstrates how to perform information extraction with a previous version (v0.7.0) of Snorkel.
+Snorkel Extraction demonstrates how to perform information extraction with a previous version (v0.7.0) of [Snorkel](http://snorkel.org).
 
 
 ## Contents
@@ -25,7 +25,7 @@ With the release of v0.9 in Aug. 2019, we added support for new training data op
 Because that release was essentially a redesign of the project from the ground up, there were many significant API changes between v0.7 (this repository) and v0.9.
 Active development will continue in the main [Snorkel repository](https://github.com/snorkel-team/snorkel), and for those beginning new Snorkel applications, **we strongly recommend building on top of the main Snorkel project.**
 
-At the same time, we recognize that many users built successful applications using v0.7 and earlier of Snorkel, particularly in applications of information extraction, which early versions of the repository were especially geared toward.
+At the same time, we recognize that many users built successful applications and extensions on v0.7 and earlier of Snorkel, particularly for information extraction tasks, which early versions of Snorkel were especially geared toward.
 Consequently, we have renamed Snorkel v0.7 as Snorkel Extraction, and make that code available in this repository. 
 However, this repository is officially in maintenance mode as of 15 Aug. 2019.
 We intend to keep the repository functioning with its current feature set to support existing applications built on it but will not be adding any new features or functionality.
