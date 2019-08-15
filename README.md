@@ -30,7 +30,7 @@ Consequently, we have renamed Snorkel v0.7 as Snorkel Extraction, and make that 
 However, this repository is officially in maintenance mode as of 15 Aug. 2019.
 We intend to keep the repository functioning with its current feature set to support existing applications built on it but will not be adding any new features or functionality.
 
-If you would like to stay informed of progress in the Snorkel open source project, join the [Snorkel Google Group](https://groups.google.com/forum/#!forum/snorkel-ml) for relatively rare announcements (e.g., major releases, new tutorials, etc.) or the [Snorkel Community Forum](https://spectrum.chat/snorkel?tab=posts) on Spectrum for more regular discussion.
+If you would like to stay informed of progress in the Snorkel open source project, join the [Snorkel email list](https://groups.google.com/forum/#!forum/snorkel-ml) for relatively rare announcements (e.g., major releases, new tutorials, etc.) or the [Snorkel community forum](https://spectrum.chat/snorkel?tab=posts) on Spectrum for more regular discussion.
 
 ## Quick Start
 
