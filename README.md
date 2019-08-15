@@ -20,7 +20,7 @@ Snorkel Extraction demonstrates how to perform information extraction with a pre
 
 ## Project Status
 The [Snorkel project](http://snorkel.org) is more active than ever!
-With the release of v0.9 in Aug. 2019, we added support for new training data operators (transformation functions and slicing functions, in addition to labeling functions), a new more scalable algorithm under the hood for the label model, a Snorkel 101 guide and fresh batch of tutorials, simplified installation options, etc.
+With the release of v0.9 in Aug. 2019, we added support for new training data operators (transformation functions and slicing functions, in addition to labeling functions), a new more scalable algorithm under the hood for the label model, a Snorkel webpage with additional resources and fresh batch of tutorials, simplified installation options, etc.
 
 Because that release was essentially a redesign of the project from the ground up, there were many significant API changes between v0.7 (this repository) and v0.9.
 Active development will continue in the main [Snorkel repository](https://github.com/snorkel-team/snorkel), and for those beginning new Snorkel applications, **we strongly recommend building on top of the main Snorkel project.**
