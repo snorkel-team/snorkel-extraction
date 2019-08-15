@@ -20,7 +20,7 @@ before_install:
 
 install:
   - conda env create --quiet --file=environment.yml
-  - conda activate snorkel
+  - conda activate snorkel-extraction
   - pip install .
   - conda list
 
